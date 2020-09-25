@@ -1,19 +1,24 @@
-import * as ActionTypes from '../ActionTypes';
+import * as ActionTypes from "../ActionTypes";
 
 export const initialState = {
-	todos: []
-}
+	todos: [],
+};
 
-export const Todos = (state=initialState, action) => {
-	switch(action.type) {
+export const Todos = (state = initialState, action) => {
+	switch (action.type) {
 		case ActionTypes.GET_TODOS:
 			return {
 				...state,
-				todos: action.payload
+				todos: action.payload,
+			};
+
+		case ActionTypes.DELETE_TODO:
+			return {
+				...state,
+				todos: state.todos.filter((todo) => todo.id !== action.payload),
 			};
 
 		default:
 			return state;
 	}
-
 };

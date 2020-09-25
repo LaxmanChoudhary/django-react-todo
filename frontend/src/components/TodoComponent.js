@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getTodos } from "../redux/ActionCreators";
+import { getTodos, deleteTodo } from "../redux/ActionCreators";
 import RenderTodo from "./RenderTodoComponent";
 
 const mapStateToProps = (state) => ({
@@ -11,6 +11,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	getTodos: () => {
 		dispatch(getTodos());
+	},
+	deleteTodo: (id) => {
+		dispatch(deleteTodo(id));
 	},
 });
 
@@ -22,8 +25,8 @@ class Todo extends Component {
 	render() {
 		return (
 			<div className="Main">
-				<h1>Todos</h1>
-				<RenderTodo todos={this.props.todos} />
+				<h1 className="text-center display-1">Todos</h1>
+				<RenderTodo todos={this.props.todos} deleteTodo={this.props.deleteTodo}/>
 			</div>
 		);
 	}

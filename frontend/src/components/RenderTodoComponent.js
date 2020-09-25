@@ -1,33 +1,42 @@
 import React from "react";
+import { Table } from "reactstrap";
 
 export default function RenderTodo(props) {
+	const status = (completed) => {
+		let button;
+		if (completed) {
+			return "Completed"
+		} else {
+			return "Not Completed"
+		}
+	}
 	return (
-		<div>
-			{console.log("second component")}
-			<table className="table table-striped">
+		<div className="container">
+
+			<Table striped>
 				<thead>
 					<tr>
 						<th>ID</th>
 						<th>Text</th>
 						<th>Completed</th>
-						<th>Created_at</th>
+						<th>Created_on</th>
 						<th />
 					</tr>
 				</thead>
 				<tbody>
-					{props.todos.map((todo) => {
+					{props.todos.map((todo) => (
 						<tr key={todo.id}>
-							<td>{todo.id}</td>
+							<td scope="row">{todo.id}</td>
 							<td>{todo.text}</td>
-							<td>{todo.created_at}</td>
-							<td>{todo.completed}</td>
+							<td>{status(todo.completed)}</td>
+							<td>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(todo.created_at)))}</td>
 							<td>
-								<button className="btn btn-danger btn-sm">Delete</button>
+								<button onClick={props.deleteTodo.bind(this, todo.id)} className="btn btn-danger btn-sm">Delete</button>
 							</td>
-						</tr>;
-					})}
+						</tr>
+					))}
 				</tbody>
-			</table>
+			</Table>
 		</div>
 	);
 }

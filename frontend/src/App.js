@@ -4,6 +4,7 @@ import React, { Component, Fragment } from "react";
 import { Provider } from "react-redux";
 
 import Todo from "./components/TodoComponent";
+import Header from "./components/HeaderComponent";
 import { ConfigureStore } from "./redux/configureStore";
 
 const store = ConfigureStore();
@@ -13,6 +14,7 @@ export class App extends Component {
 		return (
 			<Provider store={store}>
 				<Fragment>
+					<Header />
 					<Todo />
 				</Fragment>
 			</Provider>

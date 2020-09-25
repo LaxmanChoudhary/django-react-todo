@@ -1,8 +1,7 @@
-from django.urls import path
-from backend import views
+from rest_framework import routers
+from backend.api import TodoViewSet
 
-app_name = 'backend'
+router = routers.DefaultRouter()
+router.register('api/todo', TodoViewSet, 'todo')
 
-urlpatterns =[
-	path('api/todo/', views.TodoListCreate.as_view()),
-]
+urlpatterns = router.urls
