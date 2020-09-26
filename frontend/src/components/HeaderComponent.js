@@ -21,18 +21,16 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="sm">
         <NavbarBrand href="/">Django-React-Todo</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="#">Components</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
-                GitHub
-              </NavLink>
+              <NavLink href="https://github.com/LaxmanChoudhary/django-react-todo"><i className="fab fa-github fa-lg"></i></NavLink>
             </NavItem>
           </Nav>
         </Collapse>
