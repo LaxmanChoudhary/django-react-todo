@@ -27,3 +27,16 @@ export const deleteTodo = (id) => (dispatch) => {
 		})
 		.catch((err) => console.log(err));
 };
+
+//ADD_TODO
+export const addTodo = (todo) => (dispatch) => {
+	axios
+		.post('/api/todo/', todo)
+		.then((res) => {
+			dispatch({
+				type: ActionTypes.ADD_TODO,
+				payload: res.data
+			});
+		})
+		.catch((err) => console.log(err));
+}

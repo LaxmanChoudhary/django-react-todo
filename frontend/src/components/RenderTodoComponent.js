@@ -12,13 +12,11 @@ export default function RenderTodo(props) {
 	}
 	return (
 		<div className="container">
-
 			<Table striped>
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Text</th>
-						<th>Completed</th>
+						<th>Todo</th>
+						<th>Status</th>
 						<th>Created_on</th>
 						<th />
 					</tr>
@@ -26,8 +24,7 @@ export default function RenderTodo(props) {
 				<tbody>
 					{props.todos.map((todo) => (
 						<tr key={todo.id}>
-							<td scope="row">{todo.id}</td>
-							<td>{todo.text}</td>
+							<td scope="row">{todo.text}</td>
 							<td>{status(todo.completed)}</td>
 							<td>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(todo.created_at)))}</td>
 							<td>

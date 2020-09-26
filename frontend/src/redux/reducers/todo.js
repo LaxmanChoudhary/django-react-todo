@@ -18,6 +18,12 @@ export const Todos = (state = initialState, action) => {
 				todos: state.todos.filter((todo) => todo.id !== action.payload),
 			};
 
+		case ActionTypes.ADD_TODO:
+			return {
+				...state,
+				todos: state.todos.concat(action.payload),
+			};
+
 		default:
 			return state;
 	}
