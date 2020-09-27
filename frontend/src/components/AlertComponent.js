@@ -11,7 +11,6 @@ class Alerts extends Component {
 		// error -> for error objects
 		// message -> for success payload
 		const {alert, error, message} = this.props;
-
 		// conditional error messages
 		if (error !== prevProps.error) {
 			if (error.msg.text) alert.error(`${error.msg.text.join()}`);
