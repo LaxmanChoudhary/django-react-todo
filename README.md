@@ -1,1 +1,2 @@
-# django-react-todo
+# README
+# `coming soon`
