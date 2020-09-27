@@ -20,6 +20,8 @@ class Form extends Component {
 		const { text } = this.state;
 		const todo = { text };
 		this.props.addTodo(todo);
+
+		// set input field to blank after adding it
 		this.setState({
 			text: ""
 		});

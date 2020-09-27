@@ -20,6 +20,7 @@ export const deleteTodo = (id) => (dispatch) => {
 	axios
 		.delete(`api/todo/${id}/`)
 		.then((res) => {
+			dispatch(createMessage({ todoDelete : "deleted"}))
 			dispatch({
 				type: ActionTypes.DELETE_TODO,
 				payload: id,
@@ -31,12 +32,30 @@ export const deleteTodo = (id) => (dispatch) => {
 //ADD_TODO
 export const addTodo = (todo) => (dispatch) => {
 	axios
-		.post('/api/todo/', todo)
+		.post("/api/todo/", todo)
 		.then((res) => {
+			dispatch(createMessage({ todoAdded : "ADDED"}))
 			dispatch({
 				type: ActionTypes.ADD_TODO,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch((err) => console.log(err));
-}
+		.catch((err) => {
+			const errors = {
+				msg: err.response.data,
+				status: err.response.status,
+			};
+			dispatch({
+				type: ActionTypes.GET_ERRORS,
+				payload: errors,
+			});
+		});
+};
+
+// error-message creation
+export const createMessage = (msg) => {
+	return {
+		type: ActionTypes.CREATE_MESSAGE,
+		payload: msg,
+	};
+};
