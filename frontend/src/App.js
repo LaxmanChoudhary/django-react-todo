@@ -18,6 +18,7 @@ import AlertTemplate from "react-alert-template-basic";
 // Components
 import Todo from "./components/TodoComponent";
 import Header from "./components/HeaderComponent";
+import Alerts from "./components/AlertComponent";
 import Register from "./components/RegisterComponent";
 import Login from "./components/LoginComponent";
 import PrivateRoute from "./components/PrivateRoute";
@@ -46,6 +47,7 @@ class App extends Component {
 					<Router>
 						<Fragment>
 							<Header />
+							<Alerts />
 							<Switch>
 								<PrivateRoute exact path="/" component={Todo} />
 								<Route exact path="/register" component={Register} />

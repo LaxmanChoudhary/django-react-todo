@@ -7,12 +7,9 @@ import PropTypes from "prop-types";
 import { getTodos, deleteTodo, addTodo } from "../redux/ActionCreators";
 import RenderTodo from "./RenderTodoComponent";
 import Form from "./TodoFormComponent";
-import Alerts from "./AlertComponent";
 
 const mapStateToProps = (state) => ({
 	todos: state.todos.todos,
-	error: state.errors,
-	message: state.message,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -43,7 +40,6 @@ class Todo extends Component {
 	render() {
 		return (
 			<Fragment>
-				<Alerts error={this.props.error} message={this.props.message} />
 				<Form addTodo={this.props.addTodo} />
 				<h1 className="text-center display-1">Todos</h1>
 				<RenderTodo

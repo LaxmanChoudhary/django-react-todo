@@ -5,9 +5,9 @@ import axios from "axios";
 // ACTIONS FOR REDUCER- todo.js
 
 // Get todos
-export const getTodos = () => (dispatch) => {
+export const getTodos = () => (dispatch, getState) => {
 	axios
-		.get("api/todo/")
+		.get("api/todo/", tokenConfig(getState))
 		.then((res) => {
 			dispatch({
 				type: ActionTypes.GET_TODOS,
@@ -20,9 +20,9 @@ export const getTodos = () => (dispatch) => {
 };
 
 // delete todo
-export const deleteTodo = (id) => (dispatch) => {
+export const deleteTodo = (id) => (dispatch, getState) => {
 	axios
-		.delete(`api/todo/${id}/`)
+		.delete(`api/todo/${id}/`, tokenConfig(getState))
 		.then((res) => {
 			dispatch(createMessage({ todoDelete: "deleted" }));
 			dispatch({
@@ -34,9 +34,9 @@ export const deleteTodo = (id) => (dispatch) => {
 };
 
 // Add todo
-export const addTodo = (todo) => (dispatch) => {
+export const addTodo = (todo) => (dispatch, getState) => {
 	axios
-		.post("/api/todo/", todo)
+		.post("/api/todo/", todo, tokenConfig(getState))
 		.then((res) => {
 			dispatch(createMessage({ todoAdded: "ADDED" }));
 			dispatch({
@@ -72,12 +72,104 @@ export const returnErrors = (msg, status) => {
 // ACTIONS FOR REDUCER- auth.js
 
 // Check token and load user
+// getState allows to retrieve reducer state element
 export const loadUser = () => (dispatch, getState) => {
 	// just loading
 	dispatch({
 		type: ActionTypes.USER_LOADING
 	});
 
+	axios
+		.get('api/auth/user', tokenConfig(getState))
+		.then(res => {
+			dispatch({
+				type: ActionTypes.USER_LOADED,
+				payload: res.data
+			});
+		}).catch(err => {
+			dispatch(returnErrors(err.response.data, err.response.status));
+			dispatch({
+				type: ActionTypes.AUTH_ERROR,
+			})
+		})
+}
+
+// Login User
+export const loginUser = (username, password) => (dispatch) => {
+	// settting Header
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+
+	// Request body
+	const body = JSON.stringify({ username, password });
+
+
+
+	axios
+		.post('api/auth/login',body, config)
+		.then(res => {
+			dispatch({
+				type: ActionTypes.LOGIN_SUCCESS,
+				payload: res.data
+			});
+		}).catch(err => {
+			dispatch(returnErrors(err.response.data, err.response.status));
+			dispatch({
+				type: ActionTypes.LOGIN_FAIL,
+			})
+		})
+}
+
+// register
+export const registerUser = ({username, password, email}) => (dispatch) => {
+	// settting Header
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+
+	// Request body
+	const body = JSON.stringify({ username, password, email });
+
+
+
+	axios
+		.post('api/auth/register',body, config)
+		.then(res => {
+			dispatch({
+				type: ActionTypes.REGISTER_SUCCESS,
+				payload: res.data
+			});
+		}).catch(err => {
+			dispatch(returnErrors(err.response.data, err.response.status));
+			dispatch({
+				type: ActionTypes.REGISTER_FAIL,
+			})
+		})
+}
+
+// logout user
+export const logoutUser = () => (dispatch, getState) => {
+	
+
+	axios
+		.post('api/auth/logout',null, tokenConfig(getState))
+		.then(res => {
+			dispatch({
+				type: ActionTypes.LOGOUT_SUCCESS,
+				payload: res.data
+			});
+		}).catch(err => {
+			dispatch(returnErrors(err.response.data, err.response.status));
+		})
+}
+
+// setup config+token - helper function
+export const tokenConfig = getState => {
 	// get if any token exists in local storage of Auth Reducer
 	const token = getState().auth.token;	
 
@@ -90,20 +182,8 @@ export const loadUser = () => (dispatch, getState) => {
 
 	// if token exists, add to Header
 	if(token) {
-		config.headers['Authorization'] = `Token ${toen}`;
+		config.headers['Authorization'] = `Token ${token}`;
 	}
 
-	axios
-		.get('api/auth/user', config)
-		.then(res => {
-			dispatch({
-				type: ActionTypes.USER_LOADED,
-				payload: res.data
-			});
-		}).catch(err => {
-			dispatch(returnErrors(err.response.data, err.response.status));
-			dispatch({
-				type: ActionTypes.AUTH_ERROR,
-			})
-		})
+	return config;
 }
