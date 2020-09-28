@@ -10,14 +10,17 @@ import logger from 'redux-logger';
 import { Todos } from './reducers/todo';
 import { Errors } from "./reducers/errors";
 import { Message } from "./reducers/messages";
+import { Auth } from "./reducers/auth";
 
 export const ConfigureStore =() => {
 	const store = createStore(
-		//available at mapStateToProps
+		// Reducers
+		// available at mapStateToProps as state.___
 		combineReducers({
 			todos: Todos,
 			errors: Errors,
 			message: Message,
+			auth: Auth,
 		}),
 		//for redux-devtools and middleware
 		composeWithDevTools(applyMiddleware(thunk, logger))
