@@ -1,39 +1,44 @@
-import React from "react";
+import React, { Component } from "react";
 import { Table } from "reactstrap";
 
-export default function RenderTodo(props) {
-	const status = (completed) => {
-		let button;
-		if (completed) {
-			return "Completed"
-		} else {
-			return "Not Completed"
-		}
+class RenderTodo extends Component {
+	constructor(props) {
+		super(props);
 	}
-	return (
-		<div className="container">
-			<Table striped>
-				<thead>
-					<tr>
-						<th>Todo</th>
-						<th>Status</th>
-						<th>Created_on</th>
-						<th />
-					</tr>
-				</thead>
-				<tbody>
-					{props.todos.map((todo) => (
-						<tr key={todo.id}>
-							<td scope="row">{todo.text}</td>
-							<td>{status(todo.completed)}</td>
-							<td>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(todo.created_at)))}</td>
-							<td>
-								<button onClick={props.deleteTodo.bind(this, todo.id)} className="btn btn-danger btn-sm">Delete</button>
-							</td>
-						</tr>
+	render() {
+		const status = (completed) => {
+			let button;
+			if (completed) {
+				return <button className="btn btn-sm btn-success">&#x2713;</button>
+			} else {
+				return <button className="btn btn-sm btn-success">&#x2713;</button>
+			}
+		};
+
+		return (
+			<div className="card-body">
+				<ul className="list-group list-group-flush">
+					{this.props.todos.map((todo) => (
+						<li key={todo.id} className="d-flex list-group-item">
+							<div className="mr-auto">{todo.text}</div>
+							<div className="">{status(todo.completed)}</div>
+							<div className="">
+								<button
+									onClick={this.props.deleteTodo.bind(this, todo.id)}
+									className="btn btn-danger btn-sm"
+								>&#xff38;</button>
+							</div>
+						</li>
 					))}
-				</tbody>
-			</Table>
-		</div>
-	);
+				</ul>
+				<div className="btn-group">
+					<button className="btn btn-secondary btn-sm">All</button>
+					<button className="btn btn-secondary btn-sm">Completed</button>
+					<button className="btn btn-secondary btn-sm">Incomplete</button>
+				</div>
+			</div>
+		);
+	}
 }
+
+export default RenderTodo;

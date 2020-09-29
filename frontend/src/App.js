@@ -1,4 +1,9 @@
 import React, { Component, Fragment } from "react";
+
+// set css loader and style loader
+// https://blog.jakoblind.no/css-modules-webpack/
+import './App.css';
+
 //used for providing store to all child components
 import { Provider } from "react-redux";
 

@@ -23,34 +23,32 @@ class Form extends Component {
 
 		// set input field to blank after adding it
 		this.setState({
-			text: ""
+			text: "",
 		});
 	}
 	render() {
 		return (
-			<div className="container">
-				<div className="card card-body mt-4 mb-4">
-					<h2 className="display-4">Add Todo</h2>
-					<form onSubmit={this.handleSubmit}>
-						<div className="form-group">
-						{
-						//TodoInput here
-						}
+			<div>
+				<form onSubmit={this.handleSubmit} className="d-flex">
+						<div className="form-group flex-grow-1">
 							<input
 								className="form-control"
 								type="text"
 								name="text"
+								placeholder="what to-do today"
 								onChange={this.handleChange}
 								value={this.state.text}
 							/>
 						</div>
-						<div className="form-group">
-							<button type="submit" className="btn btn-sm btn-primary">
-								Submit
+						<div className="ml-auto">
+							<button
+								type="submit"
+								className="btn btn-primary"
+							>
+							Add
 							</button>
 						</div>
-					</form>
-				</div>
+				</form>
 			</div>
 		);
 	}

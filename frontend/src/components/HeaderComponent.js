@@ -44,7 +44,7 @@ export class Header extends Component {
         <strong>{user ? `Welcome ${user.username}` : "" }</strong>
       </span>
       <NavItem>
-        <Button color="info" size="sm" onClick={this.props.logoutUser}>Logout</Button>
+        <button className="btn btn-outline-dark" onClick={this.props.logoutUser}>Logout</button>
       </NavItem>
       </Fragment>
     );
@@ -72,7 +72,7 @@ export class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               {isAuthenticated ? authLinks : guestLinks}
-              <NavItem>
+              <NavItem className="px-3">
                 <NavLink href="https://github.com/LaxmanChoudhary/django-react-todo">
                   <i className="fab fa-github fa-lg"></i>
                 </NavLink>

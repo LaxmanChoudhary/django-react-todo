@@ -39,14 +39,14 @@ class Todo extends Component {
 
 	render() {
 		return (
-			<Fragment>
+			<div className="container">
+				<h1 className="display-1">todos</h1>
 				<Form addTodo={this.props.addTodo} />
-				<h1 className="text-center display-1">Todos</h1>
 				<RenderTodo
 					todos={this.props.todos}
 					deleteTodo={this.props.deleteTodo}
 				/>
-			</Fragment>
+			</div>
 		);
 	}
 }
