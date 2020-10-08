@@ -24,6 +24,7 @@ class Alerts extends Component {
 		if (message !== prevProps.message) {
 			if (message.todoDelete) alert.success(message.todoDelete);
 			if (message.todoAdded) alert.success(message.todoAdded);
+			if (message.toggleTodo) alert.success(message.toggleTodo);
 			if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
 		}
 	};

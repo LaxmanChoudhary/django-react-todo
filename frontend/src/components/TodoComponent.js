@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 //for typechecking of props
 import PropTypes from "prop-types";
 
-import { getTodos, deleteTodo, addTodo } from "../redux/ActionCreators";
+import { getTodos, deleteTodo, addTodo, toggleTodo } from "../redux/ActionCreators";
 import RenderTodo from "./RenderTodoComponent";
 import Form from "./TodoFormComponent";
 
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	addTodo: (todo) => {
 		dispatch(addTodo(todo));
+	},
+	toggleTodo: (id, stat) => {
+		dispatch(toggleTodo(id, stat));
 	},
 });
 
@@ -45,6 +48,7 @@ class Todo extends Component {
 				<RenderTodo
 					todos={this.props.todos}
 					deleteTodo={this.props.deleteTodo}
+					toggleTodo={this.props.toggleTodo}
 				/>
 			</div>
 		);

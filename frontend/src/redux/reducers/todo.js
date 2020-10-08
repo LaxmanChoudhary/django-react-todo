@@ -12,16 +12,25 @@ export const Todos = (state = initialState, action) => {
 				todos: action.payload,
 			};
 
-		case ActionTypes.DELETE_TODO:
-			return {
-				...state,
-				todos: state.todos.filter((todo) => todo.id !== action.payload),
-			};
-
 		case ActionTypes.ADD_TODO:
 			return {
 				...state,
 				todos: state.todos.concat(action.payload),
+			};
+
+		case ActionTypes.TOGGLE_TODO:
+// took a lot of time
+// never mutate
+			let todos = state.todos.map((todo) => todo.id === action.payload.id ? action.payload : todo)
+			return {
+				...state,
+				todos: todos,
+			};
+
+		case ActionTypes.DELETE_TODO:
+			return {
+				...state,
+				todos: state.todos.filter((todo) => todo.id !== action.payload),
 			};
 
 		default:

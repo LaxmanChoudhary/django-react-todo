@@ -4,14 +4,21 @@ import { Table } from "reactstrap";
 class RenderTodo extends Component {
 	constructor(props) {
 		super(props);
+
+		this.handleToggle = this.handleToggle.bind(this);
 	}
+
+	handleToggle(id, completed) {
+		let stat = { completed: !completed };
+		this.props.toggleTodo(id, stat);
+	}
+
 	render() {
-		const status = (completed) => {
-			let button;
-			if (completed) {
-				return <button className="btn btn-sm btn-success">&#x2713;</button>
+		const status = (stat) => {
+			if (stat) {
+				return "Completed";
 			} else {
-				return <button className="btn btn-sm btn-success">&#x2713;</button>
+				return "Not";
 			}
 		};
 
@@ -21,12 +28,19 @@ class RenderTodo extends Component {
 					{this.props.todos.map((todo) => (
 						<li key={todo.id} className="d-flex list-group-item">
 							<div className="mr-auto">{todo.text}</div>
-							<div className="">{status(todo.completed)}</div>
 							<div className="">
+								<button
+									className="btn btn-sm mx-1"
+									onClick={() => this.handleToggle(todo.id, todo.completed)}
+								>
+									{status(todo.completed)}
+								</button>
 								<button
 									onClick={this.props.deleteTodo.bind(this, todo.id)}
 									className="btn btn-danger btn-sm"
-								>&#xff38;</button>
+								>
+									&#xff38;
+								</button>
 							</div>
 						</li>
 					))}
