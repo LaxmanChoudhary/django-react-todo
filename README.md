@@ -11,13 +11,7 @@ Download the project using zip **Download zip** or maybe you love command line, 
 
 ## `python dependancies` for Django
 
-Repository contains a **requirements.txt** file, so you can either use a **virtualenv** or **pipenv**. <br>
-
-Shoot the following command on `terminal` in the root folder <br>
-
-If *virtualenv*, after creating a virtual environment, activate the environment and use `python -m pip install -r requirements.txt` or `pip install -r requirements.txt`. <br>
-
-If *pipenv*, in the root folder where requirements.txt is contained `pipenv install`. <br>
+**`pipenv install`**<br>
 
 ## `npm dependancies` for ReactJs
 
