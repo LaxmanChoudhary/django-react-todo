@@ -25,3 +25,7 @@ in *django-react-todo/frontend* `npm run dev`
 
 - Run Django server <br>
 in root folder `python manage.py runserver`
+
+> Somefunctionalities are still to be implemented,<br>
+- Visibility filter
+- UI improvement
