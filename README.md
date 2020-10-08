@@ -11,7 +11,8 @@ Download the project using zip **Download zip** or maybe you love command line, 
 
 ## `python dependancies` for Django
 
-**`pipenv install`**<br>
+`pipenv install`<br>
+where **pipfile** is present...<br>
 
 ## `npm dependancies` for ReactJs
 
