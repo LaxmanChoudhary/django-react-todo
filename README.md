@@ -1,7 +1,5 @@
 # Quick guide
 
-<a href="https://ibb.co/ZgD3hXB"><img src="https://i.ibb.co/ZgD3hXB/forgif-2020-10-08-15-31-25.gif" alt="forgif-2020-10-08-15-31-25" border="0"></a>
-
 # `download`
 Download the project using zip **Download zip** or maybe you love command line, then go for <br>
 `git clone https://github.com/LaxmanChoudhary/django-react-todo.git`
