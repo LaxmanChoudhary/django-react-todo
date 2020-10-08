@@ -30,5 +30,7 @@ in root folder `python manage.py runserver`
 - Visibility filter
 - UI improvement
 
+___
+
 *working on it...*<br>
 *would love your contribution...*
