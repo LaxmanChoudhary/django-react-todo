@@ -19,8 +19,6 @@ export const Todos = (state = initialState, action) => {
 			};
 
 		case ActionTypes.TOGGLE_TODO:
-// took a lot of time
-// never mutate
 			let todos = state.todos.map((todo) => todo.id === action.payload.id ? action.payload : todo)
 			return {
 				...state,
