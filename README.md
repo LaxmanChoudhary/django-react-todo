@@ -1,6 +1,6 @@
 # Quick guide
 
-![demo](https://i.imgur.com/Pg1bf30.gifv)
+![demo](https://i.imgur.com/Pg1bf30.gif)
 
 # `download`
 Download the project using zip **Download zip** or maybe you love command line, then go for <br>
