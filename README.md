@@ -1,5 +1,7 @@
 # Quick guide
 
+[Imgur](https://i.imgur.com/Pg1bf30.gifv)
+
 # `download`
 Download the project using zip **Download zip** or maybe you love command line, then go for <br>
 `git clone https://github.com/LaxmanChoudhary/django-react-todo.git`
