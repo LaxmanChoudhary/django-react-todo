@@ -1,5 +1,4 @@
 import * as ActionTypes from "./ActionTypes";
-import { baseUrl } from "./baseUrl";
 import axios from "axios";
 
 // ACTIONS FOR REDUCER- todo.js
@@ -180,6 +179,7 @@ export const logoutUser = () => (dispatch, getState) => {
 			dispatch(returnErrors(err.response.data, err.response.status));
 		});
 };
+
 
 // setup config+token - helper function
 export const tokenConfig = (getState) => {
