@@ -18,16 +18,19 @@ where **pipfile** is present...<br>
 
 ## `npm dependancies` for ReactJs
 
-- **`fontawesome-free`**
-- **`axios`**
-- **`bootstrap`**
-- **`react-alert`**
-- **`react-redux`**
-- **`react-router-dom`**
-- **`redux`**
-- **`redux-devtools-extension`**
-- **`redux-logger`**
-- **`redux-thunk`**
+- [x] mandatory
+- [ ] optional
+
+- [ ] **`fontawesome-free`**
+- [x] **`axios`** -for restAPI requests
+- [ ] **`bootstrap`**
+- [x] **`react-alert`** -for alert messages
+- [x] **`react-redux`** 
+- [x] **`react-router-dom`**
+- [x] **`redux`**
+- [ ] **`redux-devtools-extension`** -to make redux-devtools work (debugging)
+- [ ] **`redux-logger`** -for logging actions on console (debugging)
+- [x] **`redux-thunk`**
 
 `cd django-react-todo/frontend`<br>
 `npm install`<br>
