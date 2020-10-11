@@ -42,6 +42,7 @@ in root folder `python manage.py runserver`
 ___
 
 *working on it...*<br>
+
 > Some functionalities are still to be implemented,<br>
 - Visibility filter
 - UI improvement
