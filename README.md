@@ -43,8 +43,9 @@ ___
 
 *working on it...*<br>
 
-> Some functionalities are still to be implemented,<br>
-- Visibility filter
-- UI improvement
+> Some functionalities are still to be implemented
+
+- [x] Visibility filter
+- [ ] UI improvement
 
 *would love any contribution...*
